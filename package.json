@@ -1,0 +1,19 @@
+{
+  "name": "2021q4-task1-ciphering-cli-tool",
+  "version": "1.0.0",
+  "description": "CLI tool that will encode and decode a text by 3 substitution ciphers",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VodichY/2021Q4-task1-ciphering-cli-tool.git"
+  },
+  "author": "yuri vodzich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VodichY/2021Q4-task1-ciphering-cli-tool/issues"
+  },
+  "homepage": "https://github.com/VodichY/2021Q4-task1-ciphering-cli-tool#readme"
+}
