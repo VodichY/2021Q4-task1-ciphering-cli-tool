@@ -1,15 +1,21 @@
-import { argv as argvArguments} from 'process';
+import { argv as argvArguments } from 'process';
 const argumentsCli = {
   config: '',
   input: '',
   output: '',
 };
-const configArgumentsPossible = ['-c', '--config', '-i', '--input', '-o', '--output'];
+const configArgumentsPossible = [
+  '-c',
+  '--config',
+  '-i',
+  '--input',
+  '-o',
+  '--output',
+];
 const configValuesPossible = ['C1', 'R0', 'A'];
 
 function initArgumentsCli() {
   argvArguments.forEach((element) => {
-    
     if (element === '-c' || element === '--config') {
       argumentsCli.config = getArgumentCliConfig(element);
     }
@@ -31,4 +37,10 @@ function getArgumentCliConfig(element) {
   }
 }
 
-export { initArgumentsCli, argumentsCli, configValuesPossible, argvArguments, configArgumentsPossible};
+export {
+  initArgumentsCli,
+  argumentsCli,
+  configValuesPossible,
+  argvArguments,
+  configArgumentsPossible,
+};

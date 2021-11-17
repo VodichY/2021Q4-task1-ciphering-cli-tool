@@ -5,6 +5,7 @@ import {
   argumentsCli,
   configValuesPossible,
   argvArguments,
+  configArgumentsPossible,
 } from './arguments.js';
 
 function checkArgumentsCli() {
@@ -40,11 +41,23 @@ function checkArgumentsCli() {
 
 function checkArgumentsDuplicates() {
   let ckeckResult = true;
-
-  argumentsCli.forEach((element) => {
-    console.log(element);
+  const argumentsDuplicates = {};
+  argvArguments.forEach((element) => {
+    if (!configArgumentsPossible.includes(element)) {
+      return;
+    }
+    argumentsDuplicates[element] = isNaN(argumentsDuplicates[element])
+      ? 1
+      : argumentsDuplicates[element] + 1;
   });
-
+  for (let key in argumentsDuplicates) {
+    if (argumentsDuplicates[key] > 1) {
+      ckeckResult = false;
+      console.error(
+        `Value of argument '${key}' duplicates '${argumentsDuplicates[key]}' time`
+      );
+    }
+  }
   return ckeckResult;
 }
 
