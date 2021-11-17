@@ -1,18 +1,15 @@
-import { argv } from 'process';
+import { argv as argvArguments} from 'process';
 const argumentsCli = {
-  nodePath: '',
-  appPath: '',
   config: '',
   input: '',
-  output: ''
+  output: '',
 };
-const configValuesPossible = ['C1','R0','A'];
+const configArgumentsPossible = ['-c', '--config', '-i', '--input', '-o', '--output'];
+const configValuesPossible = ['C1', 'R0', 'A'];
 
 function initArgumentsCli() {
-  argumentsCli.nodePath = argv[0];
-  argumentsCli.appPath = argv[1];
-
-  argv.forEach((element) => {
+  argvArguments.forEach((element) => {
+    
     if (element === '-c' || element === '--config') {
       argumentsCli.config = getArgumentCliConfig(element);
     }
@@ -28,14 +25,10 @@ function initArgumentsCli() {
 }
 
 function getArgumentCliConfig(element) {
-  let argumentCli = "";
-  const indexArgument = argv.indexOf(element);
-
+  const indexArgument = argvArguments.indexOf(element);
   if (indexArgument !== -1) {
-    argumentCli = argv[indexArgument + 1];
+    return argvArguments[indexArgument + 1];
   }
-
-  return argumentCli;
 }
 
-export { initArgumentsCli, argumentsCli, configValuesPossible};
+export { initArgumentsCli, argumentsCli, configValuesPossible, argvArguments, configArgumentsPossible};
