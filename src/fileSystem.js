@@ -4,8 +4,8 @@ import { accessSync } from 'fs';
 
 function checkIsFileExist(fileName, mode) {
   try {
-    let fileNamen = resolve(cwd(), fileName);
-    accessSync(fileNamen, mode);
+    let pathSegments = getpathSegments(fileName);
+    accessSync(pathSegments, mode);
     return true;
   } catch (error) {
     console.error(error.message);
@@ -13,4 +13,8 @@ function checkIsFileExist(fileName, mode) {
   }
 }
 
-export { checkIsFileExist };
+function getpathSegments(fileName) {
+  return resolve(cwd(), fileName);
+}
+
+export { checkIsFileExist, getpathSegments};

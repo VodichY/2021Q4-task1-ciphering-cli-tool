@@ -25,6 +25,9 @@
       "npm run lint"
     ]
   },
+  "engines": {
+    "node": ">=10.6.0"
+  },
   "bugs": {
     "url": "https://github.com/VodichY/2021Q4-task1-ciphering-cli-tool/issues"
   },

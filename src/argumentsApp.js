@@ -4,7 +4,7 @@ const argumentsCli = {
   input: '',
   output: '',
 };
-const configArgumentsPossible = [
+const argumentsValuesPossible = [
   '-c',
   '--config',
   '-i',
@@ -12,7 +12,7 @@ const configArgumentsPossible = [
   '-o',
   '--output',
 ];
-const configValuesPossible = ['C1', 'R0', 'A'];
+const configValuesPossible = ['C1', 'C0', 'R1', 'R0', 'A'];
 
 function initArgumentsCli() {
   argvArguments.forEach((element) => {
@@ -42,5 +42,5 @@ export {
   argumentsCli,
   configValuesPossible,
   argvArguments,
-  configArgumentsPossible,
+  argumentsValuesPossible,
 };

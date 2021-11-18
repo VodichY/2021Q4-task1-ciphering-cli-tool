@@ -5,8 +5,8 @@ import {
   argumentsCli,
   configValuesPossible,
   argvArguments,
-  configArgumentsPossible,
-} from './arguments.js';
+  argumentsValuesPossible,
+} from './argumentsApp.js';
 
 function checkArgumentsCli() {
   let ckeckResult = true;
@@ -43,7 +43,7 @@ function checkArgumentsDuplicates() {
   let ckeckResult = true;
   const argumentsDuplicates = {};
   argvArguments.forEach((element) => {
-    if (!configArgumentsPossible.includes(element)) {
+    if (!argumentsValuesPossible.includes(element)) {
       return;
     }
     argumentsDuplicates[element] = isNaN(argumentsDuplicates[element])
