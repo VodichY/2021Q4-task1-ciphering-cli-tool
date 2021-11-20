@@ -6,7 +6,7 @@ import { getpathSegments } from './src/fileSystem.js';
 import {
   getReadStream,
   getWriteStream,
-  getTransformStreamCaesarCipher,
+  getArrayTransform,
 } from './src/streams.js';
 
 let readableStream;
@@ -16,21 +16,21 @@ initArgumentsCli();
 checkArgumentsCli();
 
 if (argumentsCli.input) {
-  const pathToFile = getpathSegments(argumentsCli.input);
-  readableStream = getReadStream(pathToFile);
+  const pathToFileInput = getpathSegments(argumentsCli.input);
+  readableStream = getReadStream(pathToFileInput);
 } else {
   readableStream = stdin;
 }
 
 if (argumentsCli.output) {
-  const getpathSegments = getpathSegments(argumentsCli.output);
-  writeableStream = getWriteStream(getpathSegments);
+  const pathToFileOutput = getpathSegments(argumentsCli.output);
+  writeableStream = getWriteStream(pathToFileOutput);
 } else {
   writeableStream = stdout;
 }
 
-const transform = getTransformStreamCaesarCipher();
+const arrayTransform = getArrayTransform();
 
-pipeline(readableStream, transform, writeableStream, (err) => {
+pipeline(readableStream, ...arrayTransform, writeableStream, (err) => {
   console.log(`Error: ${err}`);
 });

@@ -27,12 +27,16 @@ const upperCaseAlphabet = [
   'Z',
 ];
 
-function encryptСhunckCaesarCipher(chunckStringified) { 
-  return codingRot8CaesarCipher(1, 'decode', chunckStringified);
+function encryptСhunckCaesarCipher(shift, action, chunckStringified) {
+  return codingRot8CaesarCipher(shift, action, chunckStringified);
 }
 
-function encryptСhunckRot8(chunckStringified) {
-  return codingRot8CaesarCipher(8, 'decode', chunckStringified);
+function encryptСhunckRot8(shift, action, chunckStringified) {
+  return codingRot8CaesarCipher(shift, action, chunckStringified);
+}
+
+function encryptСhunckAtbashСipher(chunckStringified) {
+  return codingAtbashСipher(chunckStringified);
 }
 
 function codingRot8CaesarCipher(shift, action, chunckStringified) {
@@ -45,7 +49,7 @@ function codingRot8CaesarCipher(shift, action, chunckStringified) {
       if (letterIndex < 0) {
         codingText.push(letter);
       } else {
-        let newLetter = getCodingLetter(shift, action, letterIndex);
+        let newLetter = getCodingLetterRot8CaesarCipher(shift, action, letterIndex);
         codingText.push(
           letter == letter.toUpperCase() ? newLetter : newLetter.toLowerCase()
         );
@@ -54,7 +58,7 @@ function codingRot8CaesarCipher(shift, action, chunckStringified) {
   return codingText.join('');
 }
 
-function getCodingLetter(shift, action, letterIndex) {
+function getCodingLetterRot8CaesarCipher(shift, action, letterIndex) {
   let newLetterIndex = 0;
   if (action == 'decode') {
     newLetterIndex = (letterIndex - +shift) % upperCaseAlphabet.length;
@@ -68,4 +72,33 @@ function getCodingLetter(shift, action, letterIndex) {
   return newLetter;
 }
 
-export { encryptСhunckCaesarCipher, encryptСhunckRot8 };
+function codingAtbashСipher(chunckStringified) {
+  let codingText = [];
+  chunckStringified
+    .toString()
+    .split('')
+    .forEach((letter) => {
+      let letterIndex = upperCaseAlphabet.indexOf(letter.toUpperCase());
+      if (letterIndex < 0) {
+        codingText.push(letter);
+      } else {
+        let newLetter = getCodingLetterAtbashСipher(letterIndex);
+        codingText.push(
+          letter == letter.toUpperCase() ? newLetter : newLetter.toLowerCase()
+        );
+      }
+    });
+  return codingText.join('');
+}
+
+function getCodingLetterAtbashСipher(letterIndex) {
+  const newLetterIndex = (upperCaseAlphabet.length - letterIndex -1);
+  const newLetter = upperCaseAlphabet[newLetterIndex];
+  return newLetter;
+}
+
+export {
+  encryptСhunckCaesarCipher,
+  encryptСhunckRot8,
+  encryptСhunckAtbashСipher,
+};
