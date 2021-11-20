@@ -46,6 +46,13 @@ function checkArgumentsDuplicates() {
     if (!argumentsValuesPossible.includes(element)) {
       return;
     }
+    if (element === '-c' || element === '--config') {
+      element = 'config';
+    } else if (element === '-i' || element === '--input') {
+      element = 'input';
+    } else if (element === '-o' || element === '--output') {
+      element = 'output';
+    }
     argumentsDuplicates[element] = isNaN(argumentsDuplicates[element])
       ? 1
       : argumentsDuplicates[element] + 1;

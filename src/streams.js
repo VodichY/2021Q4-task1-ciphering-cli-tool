@@ -9,7 +9,8 @@ function getReadStream(pathToFile) {
 
 function getWriteStream(pathToFile) {
   return createWriteStream(pathToFile, {
-    flags: 'r+'
+    encoding: 'utf-8',
+    flags: 'a',
   });
 }
 

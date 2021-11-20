@@ -32,5 +32,7 @@ if (argumentsCli.output) {
 const arrayTransform = getArrayTransform();
 
 pipeline(readableStream, ...arrayTransform, writeableStream, (err) => {
-  console.log(`Error: ${err}`);
+  if (err) {
+    console.log(`Error: ${err}`);
+  }
 });
