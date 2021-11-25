@@ -28,6 +28,7 @@ function initArgumentsCli() {
       argumentsCli.output = getArgumentCliConfig(element);
     }
   });
+  return argumentsCli;
 }
 
 function getArgumentCliConfig(element) {
@@ -43,4 +44,5 @@ export {
   configValuesPossible,
   argvArguments,
   argumentsValuesPossible,
+  getArgumentCliConfig
 };
