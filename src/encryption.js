@@ -101,4 +101,8 @@ export {
   encryptСhunckCaesarCipher,
   encryptСhunckRot8,
   encryptСhunckAtbashСipher,
+  getCodingLetterAtbashСipher,
+  codingAtbashСipher,
+  getCodingLetterRot8CaesarCipher,
+  codingRot8CaesarCipher,
 };
