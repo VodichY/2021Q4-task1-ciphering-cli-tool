@@ -1,0 +1,64 @@
+{
+  "name": "2021q4-task1-ciphering-cli-tool",
+  "version": "1.0.0",
+  "description": "CLI tool that will encode and decode a text by 3 substitution ciphers",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "lint": "eslint --ext .js,.ts --fix src/",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VodichY/2021Q4-task1-ciphering-cli-tool.git"
+  },
+  "author": "yuri vodzich",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "npm run lint"
+    ]
+  },
+  "engines": {
+    "node": ">=10.6.0"
+  },
+  "bugs": {
+    "url": "https://github.com/VodichY/2021Q4-task1-ciphering-cli-tool/issues"
+  },
+  "homepage": "https://github.com/VodichY/2021Q4-task1-ciphering-cli-tool#readme",
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "lint-staged": "^12.0.2",
+    "prettier": "^2.4.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.0"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs"
+        ]
+      }
+    }
+  }
+}
