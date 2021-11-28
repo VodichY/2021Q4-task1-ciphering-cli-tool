@@ -15,6 +15,7 @@ function getWriteStream(pathToFile) {
 }
 
 function getTransformStreamCaesarCipher(shift, action) {
+  console.log('getTransformStreamCaesarCipher -------------');
   return new Transform({
     transform(chunck, enc, cb) {
       const chunckStringified = chunck.toString().trim();
@@ -53,10 +54,13 @@ function getTransformStreamAtbashСipher() {
 }
 
 function getArrayTransform() {
+  
   let arrayTransform = [];
   const configValueArray = argumentsCli.config.split('-');
+  console.log(configValueArray);
   configValueArray.forEach((element) => {
     if (element === 'C1') {
+      console.log("C1---");
       arrayTransform.push(getTransformStreamCaesarCipher(1, 'encode'));
     } else if (element === 'C0') {
       arrayTransform.push(getTransformStreamCaesarCipher(1, 'decode'));
