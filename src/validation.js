@@ -100,4 +100,4 @@ function checkConfig() {
   return ckeckResult;
 }
 
-export { checkArgumentsCli };
+export { checkArgumentsCli, checkConfig, checkArgumentsDuplicates, checkFileInputOutput };
